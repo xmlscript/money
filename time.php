@@ -2,6 +2,7 @@
 
 /**
  * @todo 时段
+ * @todo 时差
  */
 class time{
 

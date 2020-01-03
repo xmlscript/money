@@ -1,0 +1,19 @@
+{
+    "name": "xmlscript/money",
+    "description": "Time is money",
+    "license": "MIT",
+    "authors": [
+      {
+          "name": "xmlscript",
+          "email": "xmlscript@gmail.com"
+      }
+    ],
+    "require": {
+      "php": ">=7.1"
+    },
+    "autoload": {
+      "psr-4": {
+        "money\\": ""
+      }
+    }
+}

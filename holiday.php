@@ -5,8 +5,4 @@
  */
 class holiday extends day{
 
-  function __construct(string $str){
-
-  }
-
 }

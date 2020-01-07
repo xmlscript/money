@@ -16,25 +16,6 @@ class birthday extends day{
     return date('Y')-$this->format('Y');
   }
 
-
-  final function 五行():string{
-    return ['金','金','金','水','木','木','火','火','土','土'][$this->format('Y')%10];
-  }
-
-  final function 阴阳():string{
-    return ['阳','阴','阳','阴','阳','阴','阳','阴','阳','阴'][$this->format('Y')%10];
-  }
-
-  /**
-   * @todo 年月日时八字
-   */
-  final function bazi():string{
-
-    $a = ['庚','辛','壬','癸','甲','乙','丙','丁','戊','己'][$this->days%10];
-    $b = ['申','酉','戌','亥','子','丑','寅','卯','辰','巳','午','未'][$this->days%12];
-    return $a.$b;
-  }
-
   final function 星座():string{
     $arr = [
       [20=>'水瓶'],
@@ -50,11 +31,8 @@ class birthday extends day{
       [23=>'射手'],
       [22=>'魔羯'],
     ];
-
     $m = (int)$this->format('m')-1;
-
     if($this->format('d') < key($arr[$m])) $m+=11;
-
     return current($arr[$m%12]);
   }
 

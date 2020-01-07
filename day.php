@@ -2,20 +2,19 @@
 
 class day extends \DateTime{
 
-  final function __construct(int $Y, int $m, int $d, \DateTimeZone $timezone=null){
-
+  final static function check(int $Y, int $m, int $d):bool{
     if($Y<0)
       $Y = '-'.str_pad(abs($Y),4,'0',STR_PAD_LEFT);
     else
       $Y = str_pad($Y,4,'0',STR_PAD_LEFT);
-    $m = str_pad($m,2,'0',STR_PAD_LEFT);
-    $d = str_pad($d,2,'0',STR_PAD_LEFT);
+    return (new \DateTime)->setDate($Y,$m,$d)->format('Ynj') === "$Y$m$d";
+  }
 
-    parent::__construct("$Y-$m-$d",$timezone);
-
-    if($this->format('Ymd')!=="$Y$m$d")
-      throw new \InvalidArgumentException('');
-
+  final function __construct(int $Y, int $m, int $d, \DateTimeZone $timezone=null){
+    if(!static::check($Y,$m,$d))
+      throw new \InvalidArgumentException("不存在的日期 $Y $m $d");
+    parent::__construct();
+    $this->setDate($Y,$m,$d)->setTimeZone($timezone);
   }
 
   final function 天干():string{

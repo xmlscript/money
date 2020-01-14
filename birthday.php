@@ -2,17 +2,14 @@
 
 class birthday extends day{
 
-  /**
-   * @fixme today要跟着this的时区，免得前后差一天
-   */
   final function happy():int{
     $day = new \DateTime(date('Y').$this->format('md'));
     $today = new \DateTime('today');
     if($day<$today) $day->modify('next year');
-    return $today->diff($day)->days;
+    return $day->diff($today)->days;
   }
 
-  final function age():int{
+  final function 周岁():int{
     return date('Y')-$this->format('Y');
   }
 

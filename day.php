@@ -1,6 +1,6 @@
 <?php namespace money; // vim: se fdm=marker:
 
-class day extends \DateTime{
+class day extends \DateTimeImmutable{
 
   final function 天干():string{
     return ['庚','辛','壬','癸','甲','乙','丙','丁','戊','己'][$this->format('Y')%10];

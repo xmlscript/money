@@ -3,10 +3,10 @@
 class birthday extends day{
 
   final function happy():int{
-    $day = new \DateTime(date('Y').$this->format('md'));
-    $today = new \DateTime('today');
-    if($day<$today) $day->modify('next year');
-    return $day->diff($today)->days;
+    $someday = new \DateTime(date('Y').$this->format('md'));
+    $today = new \DateTimeImmutable('today');
+    if($someday<$today) $someday->modify('next year');
+    return $someday->diff($today)->days;
   }
 
   final function 周岁():int{

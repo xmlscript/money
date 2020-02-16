@@ -1,6 +1,6 @@
 <?php namespace money; // vim: se fdm=marker:
 
-class day extends \DateTimeImmutable{
+class day extends \DateTimeImmutable implements \JsonSerializable{
 
   final function 天干():string{
     return ['庚','辛','壬','癸','甲','乙','丙','丁','戊','己'][$this->format('Y')%10];
@@ -12,6 +12,14 @@ class day extends \DateTimeImmutable{
 
   final function 生肖():string{
     return ['猴','鸡','狗','猪','鼠','牛','虎','兔','龙','蛇','马','羊'][$this->format('Y')%12];
+  }
+
+  final function __toString(){
+    return $this->format(\DateTimeInterface::RFC7231);
+  }
+
+  final function jsonSerialize():string{
+    return "$this";
   }
 
 }
